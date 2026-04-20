@@ -1,7 +1,8 @@
 import random
+from Main import main
 
 def choose():
-    words = ['cat', 'dog']
+    words = ['cat', 'dog', 'rainbow', 'apple', 'cheese', 'book']
     pick = random.choice(words)
     return pick
 
@@ -31,6 +32,8 @@ def play_jumble():
         if answer == picked_word:
             print("Correct")
             score_jumble += 1
+        elif answer == !:
+            main()
         else:
             print("incorrect")
     print("Game over")

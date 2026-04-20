@@ -1,8 +1,9 @@
 import random
+from Main import main
 
 def get_word_hangman():
-    fruits = ['apple', 'watermelon', 'mango']
-    weapons = ['flamethrower', 'assault rifle', 'bow']
+    fruits = ['apple', 'watermelon', 'mango', 'strawberry', 'blueberry', 'orange', 'durian', 'lychee', 'jackfruit']
+    weapons = ['flamethrower', 'assault rifle', 'bow', 'crossbow', 'minigun', 'knife', 'katana']
     while True:
         theme = input("Welcome to hangman, choose a theme. Input either 'fruits' or 'weapons'").lower()
         if theme == fruits:
@@ -51,6 +52,8 @@ def play_hangman():
 
         if guess in word_hangman:
             print(f"The letter '{guess}' is in the word!")
+        elif guess == !:
+            main()
         else:
             print(f"The letter '{guess}' is not in the word.")
             wrong_guesses += 1
