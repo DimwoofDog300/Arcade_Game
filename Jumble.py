@@ -1,6 +1,5 @@
 import random
 
-
 def choose():
     words = ['cat', 'dog']
     pick = random.choice(words)
@@ -16,7 +15,7 @@ def play_jumble():
         while True:
             try:
                 rounds_jumble = int(input("How many rounds of Jumble would you like to play? "))
-                print("You have chosen to play {rounds_jumble} rounds")
+                print(f"You have chosen to play {rounds_jumble} rounds")
                 break
             except ValueError:
                 rounds_jumble = int(input("How many rounds of Jumble would you like to play? "))
