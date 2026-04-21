@@ -1,6 +1,7 @@
 # imports functions from other modules
-from Jumble import play_jumble
-from Hangman import play_hangman
+from Jumble import play_jumble, show_scores_jumble
+from Hangman import play_hangman, show_scores_hangman
+
 
 def main(): # main function
     while True: # allows it to repeat infinitely
@@ -12,7 +13,8 @@ def main(): # main function
         elif game_choice == 2:
             play_hangman() # calls hangman function
         elif game_choice == 3:
-            print("scores")
+            show_scores_hangman()
+            show_scores_jumble()
         else:
             print('Remember to only input 1, 2 or 3')
             continue
