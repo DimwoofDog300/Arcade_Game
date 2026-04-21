@@ -1,5 +1,5 @@
 import random
-
+best_scores_hangman = []
 
 def get_word_hangman(): # function that gets a word based on users entered theme
     fruits = ['apple', 'watermelon', 'mango', 'strawberry', 'blueberry', 'orange', 'durian', 'lychee', 'jackfruit']
@@ -15,12 +15,12 @@ def get_word_hangman(): # function that gets a word based on users entered theme
         else:
             print("Invalid input, either input 'fruits' or 'weapons'")
 
-def show_scores_hangman():
-    if len(best_scores_hangman) > 0:
+def show_scores_hangman(): # function that displays score
+    if len(best_scores_hangman) > 0: # if list is has 1 or more items
         print('HANGMAN SCORES LEADERBOARD:')
-        for i, score in enumerate(best_scores_hangman, 1):
-            print(f"{i}. {score} wrong guesses")
-    else:
+        for i, score in enumerate(best_scores_hangman, 1): # pairs each item in a list with its index
+            print(f"{i}. {score} wrong guesses") # prints its place and the corresponding value
+    else: # if it has no items
         print("No hangman scores yet.")
 
 def play_hangman(): # Function to play the game
@@ -32,12 +32,12 @@ def play_hangman(): # Function to play the game
 
     print(f"The word is {len(word_hangman)} letters long and you have 6 guesses") # lists the length of the word you need to guess
 
-    while wrong_guesses < max_wrong: # While loop that works when you
+    while wrong_guesses < max_wrong: #while loop that works when you
         for letter in word_hangman: # For each letter in the word chosen
-            if letter in guessed_letters:
-                print(letter, end=' ')
+            if letter in guessed_letters:  # If the letter has been guessed before
+                print(letter, end=' ')  #print the actual letter with a space after it
             else:
-                print('_', end=' ')
+                print('_', end=' ')  # prints a blank with a space after it
 
         if guessed_letters: # shows all letters already used
             print("Guessed letters:", ', '.join(guessed_letters))
@@ -46,19 +46,21 @@ def play_hangman(): # Function to play the game
 
         print(f'Guesses remaining: {max_wrong - wrong_guesses}') # shows the amount of guesses left
 
-        try:
-            guess = input('Guess a letter: ').lower().strip() # asks user to guess a letter
-            if len(guess) != 1 or not guess.isalpha():
-                raise ValueError("Please enter a single letter.")
-            if guess in guessed_letters:
-                raise ValueError(f"You have already guessed '{guess}', try another.")
-        except ValueError:
+
+        guess = input('Guess a letter: ').lower().strip() # asks user to guess a letter
+
+        if len(guess) != 1 or not guess.isalpha(): # if it is more than 1 character or not a letter
+            raise ValueError("Please enter a single letter.")
+            continue
+
+        if guess in guessed_letters: # if letter is already guessed
+            raise ValueError(f"You have already guessed '{guess}', try another.")
             continue
 
 
         guessed_letters.append(guess) # adds a guessed letter to the list of guessed_letters
 
-        if guess in word_hangman:
+        if guess in word_hangman: # if the letter guessed is in the unknowned word
             print(f"The letter '{guess}' is in the word!")
         else:
             print(f"The letter '{guess}' is not in the word.")
@@ -66,19 +68,18 @@ def play_hangman(): # Function to play the game
 
         if all(letter in guessed_letters for letter in word_hangman):
             print(f"Correct, the word was '{word_hangman}'!")
+            best_scores_hangman.append(wrong_guesses) # adds the scores to the list
+            best_scores_hangman.sort()  # sort by lowest 3 as less mistakes is better
+            best_scores_hangman = best_scores_hangman[:3]  # Keep top 3
             break
-    else:
-        print(f"Game over, the word was '{word_hangman}'.")
+        else:
+            print(f"Game over, the word was '{word_hangman}'.")
 
     if input("Play again? (yes/no): ").strip().lower() == 'yes': # asks user if they want to play it again
         play_hangman() # calls the function again
     else:
         print("Thanks for playing!")
 
-    if all(letter in guessed_letters for letter in word_hangman):
-        print(f"You won! The word was '{word_hangman}'!")
-        best_scores_hangman.append(wrong_guesses)
-        best_scores_hangman.sort()  # Lower is better
-        best_scores_hangman = best_scores_hangman[:3]  # Keep top 3
+
 
     play_hangman() # runs the function

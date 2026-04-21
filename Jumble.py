@@ -1,5 +1,6 @@
 import random
 
+best_scores_jumble = [] # makes a empty list as no scores have been added
 
 def choose(): # A function to choose a word from a list of words
     words = ['cat', 'dog', 'rainbow', 'apple', 'cheese', 'book'] # List of words to choose from
@@ -12,12 +13,14 @@ def jumble(words): # Function to get that random word and then jumble it up
     return jumbled # Returns the jumbled word
 
 def show_scores_jumble():
-    if len(best_scores_jumble) > 0:
+    if len(best_scores_jumble) > 0: # detects if the length of the list has more than 1 values in it
         print('JUMBLE SCORES LEADERBOARD')
-        for i, score in enumerate(best_scores_jumble, 1):
+        for i, score in enumerate(best_scores_jumble, 1): # pairs the list with a number and prints out the score
             print(f"{i}. {score} correct")
-        else:
+            print('')
+        else: # If there is no items in list
             print("No jumble scores yet.")
+            print('')
 
 
 def play_jumble(): # Function that allows user to play the game
@@ -49,9 +52,9 @@ def play_jumble(): # Function that allows user to play the game
         else: # If they got it wrong print incorrect
             print("Incorrect")
 
-    best_scores_jumble.append(score_jumble)
-    best_scores_jumble.sort(reverse=True)  # Higher is better for jumble
-    best_scores_jumble = best_scores_jumble[:3]
+    best_scores_jumble.append(score_jumble) # adds the score to the list
+    best_scores_jumble.sort(reverse=True)  # sorts the scores highest to lowest
+    best_scores_jumble = best_scores_jumble[:3] # makes it so that the first 3 items which were just sorted to highest to lowest is chosen
 
     print("Game over") # if rounds run out, then game is over
 

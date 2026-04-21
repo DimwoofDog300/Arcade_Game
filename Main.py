@@ -8,12 +8,13 @@ def main(): # main function
         print('Welcome to the arcade')
         print('Remember input ! in any game to exit it')
         game_choice = int(input('Input 1 for jumble, 2 for hangman and 3 for scores')) # Asks user what they want to play
+        print('')
         if game_choice == 1:
             play_jumble() # calls jumble function
         elif game_choice == 2:
             play_hangman() # calls hangman function
         elif game_choice == 3:
-            show_scores_hangman()
+            show_scores_hangman() # calls both functions and will show the scores of the games
             show_scores_jumble()
         else:
             print('Remember to only input 1, 2 or 3')
