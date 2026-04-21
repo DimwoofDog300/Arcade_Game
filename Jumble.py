@@ -1,5 +1,5 @@
 import random
-from Main import main # Allows the main function to be used
+
 
 def choose(): # A function to choose a word from a list of words
     words = ['cat', 'dog', 'rainbow', 'apple', 'cheese', 'book'] # List of words to choose from
@@ -16,11 +16,12 @@ def jumble(words): # Function to get that random word and then jumble it up
 def play_jumble(): # Function that allows user to play the game
     while True: # Repeats the while loop
         try:
-            rounds_jumble = int(input("How many rounds of Jumble would you like to play? "))
-            print(f"You have chosen to play {rounds_jumble} rounds")
-            break
+            rounds_jumble = int(input("How many rounds of Jumble would you like to play? ")) # asks how round user wants to play
+            print(f"You have chosen to play {rounds_jumble} rounds") # displays how rounds the user is playing
+            break # exits the loop
         except ValueError:
-            rounds_jumble = int(input("How many rounds of Jumble would you like to play? "))
+            print('Remember to input a integer to choose how many rounds to play')
+            continue
 
     score_jumble = 0 # Sets the score to 0
 
@@ -35,10 +36,9 @@ def play_jumble(): # Function that allows user to play the game
             print("Correct")
             score_jumble += 1 # Increases score by 1
         elif answer == '!': # If user inputs, return to menu
-            main()
+            print("go back to main")
         else: # If they got it wrong print incorrect
-            print("incorrect")
+            print("Incorrect")
     print("Game over") # if rounds run out, then game is over
 
 
-play_jumble()
