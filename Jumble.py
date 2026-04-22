@@ -1,4 +1,5 @@
 import random
+import time
 
 best_scores_jumble = [] # makes a empty list as no scores have been added
 
@@ -26,23 +27,19 @@ def show_scores_jumble():
 def play_jumble(): # Function that allows user to play the game
     global best_scores_jumble
 
-    while True: # Repeats the while loop
-        try:
-            rounds_jumble = int(input("How many rounds of Jumble would you like to play? ")) # asks how round user wants to play
-            print(f"You have chosen to play {rounds_jumble} rounds") # displays how rounds the user is playing
-            break # exits the loop
-        except ValueError:
-            print('Remember to input a integer to choose how many rounds to play')
-            continue
+    print('Jumble is a game where you get a jumbled word and you will need to try to guess the orginal word.')
+    print('You have 10 rounds and try to guess as many words as you can correctly')
+
+    time.sleep(1)
 
     score_jumble = 0 # Sets the score to 0
 
-    for i in range(rounds_jumble): # Loops the amount of times based on the rounds they inputted
+    for i in range(10): # Loops the amount of times based on the rounds they inputted
         picked_word = choose() # Calls the function to choose a word
         jumbled_word = jumble(picked_word) # Call the function to scramble the word
         print(jumbled_word) # Output the word
 
-        answer = input("What is the word").strip().lower() # Asks user for word
+        answer = input("What is the word: ").strip().lower() # Asks user for word
 
         if answer == picked_word: # If it is the same, then is correct
             print("Correct")

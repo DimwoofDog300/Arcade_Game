@@ -1,4 +1,6 @@
 import random
+import time
+
 best_scores_hangman = []
 
 def get_word_hangman(): # function that gets a word based on users entered theme
@@ -22,13 +24,21 @@ def show_scores_hangman(): # function that displays score
             print(f"{i}. {score} wrong guesses") # prints its place and the corresponding value
     else: # if it has no items
         print("No hangman scores yet.")
+        print('')
 
 def play_hangman(): # Function to play the game
     word_hangman = get_word_hangman() # calls the function to get a word
     guessed_letters = [] # makes a empty list
     wrong_guesses = 0 # Sets your guesses to 0
     max_wrong = 6 # Sets a boundry on how many incorrect answers you allowed to have
-    global best_scores_hangman
+
+    global best_scores_hangman # allows this variable to be used inside this function
+
+    print('This game you are given 6 chances to guess a completely unknown word only given a theme')
+    time.sleep(1)
+    print('You need to enter a letter and if it is in the word it will show where it is, uses this to guess the word')
+
+    time.sleep(1)
 
     print(f"The word is {len(word_hangman)} letters long and you have 6 guesses") # lists the length of the word you need to guess
 
