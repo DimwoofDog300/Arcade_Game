@@ -2,10 +2,10 @@ import random
 import time
 
 best_scores_hangman = []
+fruits = ['apple', 'watermelon', 'mango', 'strawberry', 'blueberry', 'orange', 'durian', 'lychee', 'jackfruit']
+weapons = ['flamethrower', 'assault rifle', 'bow', 'crossbow', 'minigun', 'knife', 'katana']
 
 def get_word_hangman(): # function that gets a word based on users entered theme
-    fruits = ['apple', 'watermelon', 'mango', 'strawberry', 'blueberry', 'orange', 'durian', 'lychee', 'jackfruit']
-    weapons = ['flamethrower', 'assault rifle', 'bow', 'crossbow', 'minigun', 'knife', 'katana']
     while True:
         theme = input("Welcome to hangman, choose a theme. Input either 'fruits' or 'weapons'").lower().strip() # Asks input for a theme
         if theme == 'fruits':
@@ -86,8 +86,8 @@ def play_hangman(): # Function to play the game
             best_scores_hangman.sort()  # sort by lowest 3 as less mistakes is better
             best_scores_hangman = best_scores_hangman[:3]  # Keep top 3
             break
-        else:
-            print(f"Game over, the word was '{word_hangman}'.")
+    else:
+        print(f"Game over, the word was '{word_hangman}'.")
 
     if input("Play again? (yes/no): ").strip().lower() == 'yes': # asks user if they want to play it again
         play_hangman() # calls the function again
@@ -96,4 +96,3 @@ def play_hangman(): # Function to play the game
 
 
 
-    play_hangman() # runs the function
