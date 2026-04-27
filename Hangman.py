@@ -7,7 +7,7 @@ def get_word_hangman(): # function that gets a word based on users entered theme
     fruits = ['apple', 'watermelon', 'mango', 'strawberry', 'blueberry', 'orange', 'durian', 'lychee', 'jackfruit']
     weapons = ['flamethrower', 'assault rifle', 'bow', 'crossbow', 'minigun', 'knife', 'katana']
     while True:
-        theme = input("Welcome to hangman, choose a theme. Input either 'fruits' or 'weapons'").lower() # Asks input for a theme
+        theme = input("Welcome to hangman, choose a theme. Input either 'fruits' or 'weapons'").lower().strip() # Asks input for a theme
         if theme == 'fruits':
             pick_fruits = random.choice(fruits) # chooses a random word from the fruits list
             return pick_fruits
@@ -59,12 +59,16 @@ def play_hangman(): # Function to play the game
 
         guess = input('Guess a letter: ').lower().strip() # asks user to guess a letter
 
-        if len(guess) != 1 or not guess.isalpha(): # if it is more than 1 character or not a letter
-            raise ValueError("Please enter a single letter.")
+        if len(guess) == 0:  # If the user entered nothing
+            print("You didn't enter anything.")
+            continue
+
+        if len(guess) != 1 or not guess.isalpha():  # If it is more than 1 character or not a letter
+            print("Please enter a single letter.")
             continue
 
         if guess in guessed_letters: # if letter is already guessed
-            raise ValueError(f"You have already guessed '{guess}', try another.")
+            print(f"You have already guessed '{guess}', try another.")
             continue
 
 

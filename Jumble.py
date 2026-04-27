@@ -39,13 +39,11 @@ def play_jumble(): # Function that allows user to play the game
         jumbled_word = jumble(picked_word) # Call the function to scramble the word
         print(jumbled_word) # Output the word
 
-        answer = input("What is the word: ").strip().lower() # Asks user for word
+        answer = input("What is the unjumbled word: ").strip().lower() # Asks user for word
 
         if answer == picked_word: # If it is the same, then is correct
             print("Correct")
             score_jumble += 1 # Increases score by 1
-        elif answer == '!': # If user inputs, return to menu
-            print("go back to main")
         else: # If they got it wrong print incorrect
             print("Incorrect")
 

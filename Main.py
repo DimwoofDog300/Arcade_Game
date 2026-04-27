@@ -13,12 +13,15 @@ def main(): # main function
         game_choice = input('Input 1 for jumble, 2 for hangman and 3 for scores and 4 for exiting the program: ') # Asks user what they want to play
         print('')
         if game_choice == '1':
+            print('Chosen jumble')
             time.sleep(1)
             play_jumble() # calls jumble function
         elif game_choice == '2':
+            print('Chosen hangman')
             time.sleep(1)
             play_hangman() # calls hangman function
         elif game_choice == '3':
+            print('Chosen scores')
             time.sleep(1)
             show_scores_hangman() # calls both functions and will show the scores of the games
             print('')
